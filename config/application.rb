@@ -15,7 +15,7 @@ require 'action_controller/railtie'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module MyMonstersAPI
+module ColorPaletteMaker
   # :nodoc:
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified
@@ -38,15 +38,15 @@ module MyMonstersAPI
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
-     # Cross-Origin Resource Sharing
-     config.middleware.use Rack::Cors do
-       allow do
-         origins ENV['CLIENT_ORIGIN'] || 'http://localhost:8080'
-         resource '*',
-                  headers: :any,
-                  methods: [:options, :get,
-                            :post, :patch, :put, :delete]
-       end
-     end
-   end
- end
+    # Cross-Origin Resource Sharing
+    config.middleware.use Rack::Cors do
+      allow do
+        origins ENV['CLIENT_ORIGIN'] || 'https://jlmitch1989.github.io'
+        resource '*',
+                 headers: :any,
+                 methods: [:options, :get,
+                           :post, :patch, :put, :delete]
+      end
+    end
+  end
+end
