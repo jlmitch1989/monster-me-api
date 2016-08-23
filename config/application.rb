@@ -38,15 +38,15 @@ module MyMonstersAPI
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
-    # Cross-Origin Resource Sharing
-    config.middleware.use Rack::Cors do
-      allow do
-        origins ENV['CLIENT_URL'] || 'http://localhost:8080'
-        resource '*',
-                 headers: :any,
-                 methods: [:options, :get,
-                           :post, :patch, :put, :delete]
-      end
-    end
-  end
-end
+     # Cross-Origin Resource Sharing
+     config.middleware.use Rack::Cors do
+       allow do
+         origins ENV['CLIENT_ORIGIN'] || 'http://localhost:8080'
+         resource '*',
+                  headers: :any,
+                  methods: [:options, :get,
+                            :post, :patch, :put, :delete]
+       end
+     end
+   end
+ end
