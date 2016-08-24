@@ -1,10 +1,16 @@
-class CreationsController < OpenReadController
+class CreationsController < ProtectedController
   before_action :set_creation, only: [:show, :update, :destroy]
 
   # GET /creations
   # GET /creations.json
   def index
     @creations = Creation.all
+
+    render json: @creations
+  end
+
+  def users_index
+    @creations = current_user.creations
 
     render json: @creations
   end
